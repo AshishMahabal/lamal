@@ -38,7 +38,7 @@ elif toDisplay == "By topic":
 	numsub,' submission(s)'
 	lamalarts[lamalarts['Topic']==topic][['Author','Title']]
 else:
-	if st.checkbox('Show top authors'):
+	if st.checkbox('Show top authors',value=True):
 			fig, ax = plt.subplots()
 			lamalarts['Author'].value_counts()[:10].plot.bar()
 			st.pyplot(fig)
