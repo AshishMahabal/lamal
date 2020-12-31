@@ -40,11 +40,14 @@ elif toDisplay == "By topic":
 else:
 	if st.checkbox('Show top authors',value=True):
 			fig, ax = plt.subplots()
-			lamalarts['Author'].value_counts()[:10].plot.bar()
+			lamalarts['Author'].value_counts()[:10].sort_values().plot(kind="barh")
 			st.pyplot(fig)
 	if st.checkbox('Show top topics'):
 			fig, ax = plt.subplots()
-			lamalarts['Topic'].value_counts()[:10].plot.bar()
+			lamalarts['Topic'].value_counts()[:10].sort_values().plot(kind="barh")
+			for tick in ax.get_yticklabels():
+				tick.set_fontname("Sanskrit 2003")
 			st.pyplot(fig)
+			lamalarts['Topic'].value_counts().rename_axis('Topic').reset_index(name='count')[:10].T
 	"Here are the articles so far ..."
 	lamalarts[['Topic','Author','Title']]
