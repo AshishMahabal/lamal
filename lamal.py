@@ -38,11 +38,11 @@ elif toDisplay == "By topic":
 	numsub,' submission(s)'
 	lamalarts[lamalarts['Topic']==topic][['Author','Title']]
 else:
-	if st.checkbox('Show top authors',value=True):
+	if st.checkbox('Show top authors',value=False):
 			fig, ax = plt.subplots()
 			lamalarts['Author'].value_counts()[:10].sort_values().plot(kind="barh")
 			st.pyplot(fig)
-	if st.checkbox('Show top topics'):
+	if st.checkbox('Show top topics',value=True):
 			fig, ax = plt.subplots()
 			lamalarts['Topic'].value_counts()[:10].sort_values().plot(kind="barh")
 			for tick in ax.get_yticklabels():
