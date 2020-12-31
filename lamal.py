@@ -21,14 +21,14 @@ toDisplay = st.sidebar.radio(
 if toDisplay == "By author":
 	author = st.sidebar.selectbox(
 		'Select by Author',
-		lamalarts['Author'].unique())	
+		lamalarts['Author'].sort_values().unique())
 	numart = len(lamalarts[lamalarts['Author']==author])
 	'You selected Author:',author,' (',numart,' contributions)'
 	lamalarts[lamalarts['Author']==author][['Topic','Title','Host','Month','Year']]	
 elif toDisplay == "By topic":
 	topic = st.sidebar.selectbox(
 		'Select by Topic',
-		lamalarts['Topic'].unique())
+		lamalarts['Topic'].sort_values().unique())
 	numsub = len(lamalarts[lamalarts['Topic']==topic])
 	'You selected Topic:', topic, '(',\
 	'Host: ', lamalarts[lamalarts['Topic']==topic]['Host'].iloc[0],\
