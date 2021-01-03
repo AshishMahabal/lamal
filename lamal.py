@@ -3,6 +3,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+import matplotlib.font_manager as font_manager
+
+font_dirs = ['.', ]
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+font_list = font_manager.createFontList(font_files)
+font_manager.fontManager.ttflist.extend(font_list)
+
+font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
+
 st.title("LA Marathi Authors' Literameet (LAMAL)")
 st.sidebar.title("LAMAL")
 
@@ -46,7 +55,7 @@ else:
 			fig, ax = plt.subplots()
 			lamalarts['Topic'].value_counts()[:10].sort_values().plot(kind="barh")
 			for tick in ax.get_yticklabels():
-				tick.set_fontname("Sanskrit 2003")
+				tick.set_fontname("Kalam")
 			st.pyplot(fig)
 			lamalarts['Topic'].value_counts().rename_axis('Topic').reset_index(name='count')[:10].T
 	"Here are the articles so far ..."
